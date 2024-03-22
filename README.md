@@ -22,7 +22,7 @@ Here are some possible commands:
 
 - Modify resources under the gateway:
 
-```json
+```jsonc
 {
   "_to": 4,
   "id": 123,
@@ -31,7 +31,8 @@ Here are some possible commands:
     "name": "/lumi/gw/res/write",
     "value": {
       "data": {
-        "8.0.2092": "{\"mode\":0,\"len\":311,\"ircode\":\"nE5mk0lk0mc5m0sm0xnMsmswADKbTCWTGbTQBA5uAgk2mMzlk1mMxAHIBgprOZxLJsAoUxm0wmQCJTEBkgEFmoHxTaYTcBhgCCAQoDsphOACHAZWaziaSyazMDogZCBUKZgEFNQCDAVIBkpjNpkCIc2BdUBkgf3moRZAqSEgc2mEwCQWazkKowkDAqebgDlNgVFCIoCpAs7BlMJBwQjAgQNw5xLJpMZlMJrLJxOZrOJZMpjNwRiEKOYAAEA=\"}" // e.g. emit IR sequence on G3
+        // e.g. emit IR sequence on G3
+        "8.0.2092": "{\"mode\":0,\"len\":311,\"ircode\":\"nE5mk0lk0mc5m0sm0xnMsmswADKbTCWTGbTQBA5uAgk2mMzlk1mMxAHIBgprOZxLJsAoUxm0wmQCJTEBkgEFmoHxTaYTcBhgCCAQoDsphOACHAZWaziaSyazMDogZCBUKZgEFNQCDAVIBkpjNpkCIc2BdUBkgf3moRZAqSEgc2mEwCQWazkKowkDAqebgDlNgVFCIoCpAs7BlMJBwQjAgQNw5xLJpMZlMJrLJxOZrOJZMpjNwRiEKOYAAEA=\"}"
       },
       "did": "lumi1.54ef12345678",
       "source": ""
@@ -42,7 +43,7 @@ Here are some possible commands:
 
 - Let your gateway connects to other gateways in the LAN, so you can send `lanbox.control` commands (see below) to them.
 
-```json
+```jsonc
 {
   "_to": 524288,
   "id": 123,
@@ -56,7 +57,7 @@ Here are some possible commands:
 
 - Modify resources of another gateway in the LAN
 
-```json
+```jsonc
 {
   "_to": 524288,
   "id": 123,
@@ -76,7 +77,7 @@ Here are some possible commands:
 
 - Read resources of another gateway in the LAN
 
-```json
+```jsonc
 {
   "_to": 524288,
   "id": 123,
@@ -94,7 +95,7 @@ Here are some possible commands:
 
 If success, response will be reflected in `agent/response` topic:
 
-```json
+```jsonc
 // response
 {
   "_from": 524288,
@@ -114,7 +115,7 @@ If success, response will be reflected in `agent/response` topic:
 
 - Subscribe/unsubscribe to resources of other gateways in the LAN (I haven't figured out how to make it work)
 
-```json
+```jsonc
 {
   "_to": 524288,
   "id": 123,
@@ -135,7 +136,7 @@ If success, response will be reflected in `agent/response` topic:
 }
 ```
 
-```json
+```jsonc
 {
   "_to": 524288,
   "id": 123,
@@ -156,7 +157,7 @@ If success, response will be reflected in `agent/response` topic:
 }
 ```
 
-```json
+```jsonc
 {
   "_to": 524288,
   "id": 123,
@@ -178,7 +179,7 @@ If success, response will be reflected in `agent/response` topic:
 }
 ```
 
-```json
+```jsonc
 {
   "_to": 524288,
   "id": 123,
@@ -196,4 +197,4 @@ If success, response will be reflected in `agent/response` topic:
 
 If subscribed successfully, updates to subscribed resources will be reflected in `agent/response` topic (those with `"method": "auto.forward"`).
 
-Be aware that resource values for `auto.forward` are actually the UTF-8 Hex representation of the actual value. So `"0.4.85":"323530"` actually means `"0.4.85":"250"`.
+Be aware that resource values for `auto.forward` are actually the UTF-8 Hex representation of the original value. So `"0.4.85":"323530"` actually means `"0.4.85":"250"`.
