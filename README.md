@@ -113,7 +113,8 @@ If success, response will be reflected in `agent/response` topic:
 }
 ```
 
-- Subscribe/unsubscribe to resources of other gateways in the LAN (I haven't figured out how to make it work)
+- Subscribe/unsubscribe to resources of other gateways in the LAN
+  - There are some caveats - you must first have an automation rule in Aqara app that takes at least two conditions. The first condition must come from a subdevice of this gateway (or this gateway itself). The other condition must be set to any subdevice of the gateway (or the gateway itself) you want LAN control.
 
 ```jsonc
 {
