@@ -1,6 +1,6 @@
 # ha_agent to MQTT for Aqara Gateway Hubs (M2/G3/etc.)
 
-Use [cross](https://github.com/cross-rs/cross) to build.
+Use [cross](https://github.com/cross-rs/cross) to build, or grab a prebuilt binary at [Releases](https://github.com/stackia/aqara-agent2mqtt/releases).
 
 ```shell
 cross build --target armv7-unknown-linux-gnueabihf --release
