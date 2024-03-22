@@ -41,7 +41,7 @@ Here are some possible commands:
 }
 ```
 
-- Let your gateway connects to other gateways in the LAN, so you can send `lanbox.control` commands (see below) to them.
+- Let your gateway connect to other gateways in the LAN, so you can send `lanbox.control` commands (see below) to them.
 
 ```jsonc
 {
