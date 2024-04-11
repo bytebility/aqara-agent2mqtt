@@ -44,24 +44,28 @@ async fn mqtt_start_consuming(
         .clean_session(true)
         .finalize();
 
-    println!(
-        "Connecting to the MQTT broker at '{}'...",
-        mqtt_client.server_uri()
-    );
     // Make the connection to the broker
-    match mqtt_client.connect(conn_opts).await {
-        Ok(response) => {
-            if let Some(response) = response.connect_response() {
-                println!(
-                    "Connected to: '{}' with MQTT version {}",
-                    response.server_uri, response.mqtt_version
-                );
+    loop {
+        println!(
+            "Connecting to the MQTT broker at '{}'...",
+            mqtt_client.server_uri()
+        );
+        match mqtt_client.connect(conn_opts.clone()).await {
+            Ok(response) => {
+                if let Some(response) = response.connect_response() {
+                    println!(
+                        "Connected to: '{}' with MQTT version {}",
+                        response.server_uri, response.mqtt_version
+                    );
 
-                mqtt_subscribe(&mqtt_client).await;
+                    mqtt_subscribe(&mqtt_client).await;
+                    break;
+                }
             }
-        }
-        Err(e) => {
-            panic!("Error connecting to the MQTT broker: {:?}", e);
+            Err(e) => {
+                println!("Error connecting to the MQTT broker: {:?}", e);
+                sleep(Duration::from_millis(500)).await;
+            }
         }
     }
 
